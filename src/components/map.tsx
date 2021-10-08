@@ -4,20 +4,19 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet'
 interface MapProps {
   position: any
   children: React.ReactNode
+  style?: any
+  zoom?: number
 }
 
-export const Map = ({ position, children }: MapProps) => {
+export const Map = ({ position, children, style, zoom }: MapProps) => {
   return (
     <div className="relative">
       <MapContainer
         center={[position.latitude, position.longitude]}
-        zoom={3}
+        zoom={zoom}
         scrollWheelZoom={false}
         key={position}
-        style={{
-          height: '550px',
-          width: '650px',
-        }}
+        style={style}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {children}
