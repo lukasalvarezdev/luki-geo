@@ -1,15 +1,11 @@
 import * as API from 'api'
-import { AuthContextProvider, useAuthContext } from 'auth-context/store'
+import { useAuthContext } from 'auth-context/store'
 import { useFetch } from 'hooks'
 import { useRouter } from 'next/dist/client/router'
 import * as React from 'react'
 
 export default function LoginPage() {
-  return (
-    <AuthContextProvider>
-      <LoginForm />
-    </AuthContextProvider>
-  )
+  return <LoginForm />
 }
 
 const LoginForm = () => {
@@ -20,7 +16,11 @@ const LoginForm = () => {
   })
   const [error, setError] = React.useState('')
   const { fetchData } = useFetch()
-  const { setIsAuth } = useAuthContext()
+  const { login, isAuth } = useAuthContext()
+
+  React.useEffect(() => {
+    if (isAuth) push('/')
+  }, [isAuth])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInfo(info => ({ ...info, [e.target.name]: e.target.value }))
@@ -38,8 +38,7 @@ const LoginForm = () => {
       API.getAuthToken,
       {
         onSuccess: () => {
-          setIsAuth(true)
-          push('/')
+          login()
         },
         onFailure: error => {
           setError(error)

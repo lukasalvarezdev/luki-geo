@@ -4,9 +4,9 @@ export async function request<ResType>(url: string, opts: RequestOptions): Reque
   try {
     const response = await fetch(url, getFetchOptions(opts))
     const parsedRes = await getFetchResults(response, parseMethod, expectedStatusCode)
-    return [parsedRes, parsedRes.error]
+    return [parsedRes, null]
   } catch (error: any) {
-    return [null, error || 'There was an error.']
+    return [null, error.error || 'There was an error.']
   }
 }
 

@@ -20,6 +20,13 @@ export async function getAuthToken(userInfo: UserInfo): RequestRes<true> {
   if (!token) {
     return [null, error ?? 'There was an error']
   }
-  localStorage.setItem('access_token', token.access_token)
+  localStorage.setItem('access_token', `${token.token_type} ${token.access_token}`)
   return [true, error]
+}
+export async function getMember(): RequestRes<any> {
+  const [user, error] = await request<any>('https://coding-test.rootstack.net/api/auth/me', {
+    method: 'GET',
+  })
+
+  return [user, error]
 }

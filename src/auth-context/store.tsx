@@ -1,17 +1,11 @@
+import { UseAuthReturn } from 'hooks/use-auth'
 import * as React from 'react'
 
-export const AuthContextProvider: React.FC = ({ children }) => {
-  const [isAuth, setIsAuth] = React.useState(false)
-
-  return <authContext.Provider value={{ isAuth, setIsAuth }}>{children}</authContext.Provider>
+export const AuthContextProvider: React.FC<UseAuthReturn> = ({ children, ...props }) => {
+  return <authContext.Provider value={{ ...props }}>{children}</authContext.Provider>
 }
 
-interface AuthContext {
-  isAuth: boolean
-  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const authContext = React.createContext<AuthContext>(undefined as unknown as AuthContext)
+const authContext = React.createContext<UseAuthReturn>(undefined as unknown as UseAuthReturn)
 
 export function useAuthContext() {
   const ctx = React.useContext(authContext)
@@ -22,7 +16,7 @@ export function useAuthContext() {
       throw new Error('useAuthContext must be used within <AuthContextProvider />')
     } else if (env == 'AuthContextion') {
       console.error('useAuthContext must be used within <AuthContextProvider />')
-      return {} as AuthContext
+      return {} as UseAuthReturn
     }
   }
 
