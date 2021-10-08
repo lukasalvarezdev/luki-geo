@@ -1,0 +1,10 @@
+@import url('./lib.css');
+@import url('./resets.css');
+@import url('./variables.css');
+@import url('./spinners.css');
+
+.container {
+  max-width: 1200px;
+  width: 95%;
+  margin: 0 auto;
+}

@@ -1,0 +1,23 @@
+:root {
+  /* NEW */
+  --bg-gray: #f4f4f4;
+  --light-gray: #ebebeb;
+  --medium-gray: #c2c2c2;
+  --gray: #5a5a5a;
+  --main-blue: #0a40fe;
+  --light-blue: #f9faff;
+  --primary-gray: #a5a8af;
+  --white: #fff;
+
+  --primary-black: #0e113a;
+  --medium-light-blue: #f4f7fe;
+  --medium-blue: #d5e4f7;
+  --font-averta: 'Averta', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-open: 'Open Sans', sans-serif;
+  --purple: #4b8dfb;
+  --warning: #ffc021;
+  --success: #28b784;
+  --info: #1f7ce9;
+}

@@ -4,7 +4,7 @@ import { AppProps } from 'next/app'
 import { AuthContextProvider } from 'auth-context/store'
 import { useRouter } from 'next/router'
 import { useAuthentication } from 'hooks/use-auth'
-// import '../global/styles/globals.css'
+import '../styles/globals.css'
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   const { isReady } = useRouter()

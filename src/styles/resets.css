@@ -1,0 +1,60 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 1rem equals 10px*/
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  box-sizing: inherit;
+  font-family: var(--font-poppins);
+  font-size: 1.6rem;
+  color: var(--primary-black);
+  background-color: var(--bg-gray);
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+svg.black path {
+  fill: var(--primary-black);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+}
+
+*[contentEditable='true'] {
+  outline: none;
+}
