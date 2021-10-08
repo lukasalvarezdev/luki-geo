@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet'
 
-interface MapProps {
+export interface MapProps {
   position: any
   children: React.ReactNode
   style?: any

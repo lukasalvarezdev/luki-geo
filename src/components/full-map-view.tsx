@@ -1,14 +1,15 @@
 import styled from 'styled-components'
 import { useJobsContext } from './jobs-context'
 import dynamic from 'next/dynamic'
-const Map = dynamic<any>(() => import('./map').then(m => m.Map), { ssr: false })
-const LocationMarker = dynamic<any>(() => import('./map').then(m => m.LocationMarker), {
+const Map = dynamic<MapProps>(() => import('./map').then(m => m.Map), { ssr: false })
+const LocationMarker = dynamic<MapProps>(() => import('./map').then(m => m.LocationMarker), {
   ssr: false,
 })
 const Popup = dynamic<any>(() => import('react-leaflet').then(m => m.Popup), {
   ssr: false,
 })
 import Link from 'next/link'
+import { MapProps } from './map'
 
 export const FullMap = () => {
   const {
@@ -22,6 +23,11 @@ export const FullMap = () => {
           latitude: 0,
           longitude: 0,
         }}
+        style={{
+          height: 'calc(100vh - 100px)',
+          width: '100%',
+        }}
+        zoom={3}
       >
         {data?.map((job: any, index: number) => (
           <LocationMarker key={index} position={{ lat: job.latitude, lng: job.longitude }}>

@@ -15,7 +15,7 @@ export const AuthApp = ({ children }: { children: React.ReactNode }) => {
   return (
     <StyledAuthApp>
       <Header />
-      <div className="container bg-white">{children}</div>
+      <div className="container bg-white normal-shadow">{children}</div>
     </StyledAuthApp>
   )
 }
