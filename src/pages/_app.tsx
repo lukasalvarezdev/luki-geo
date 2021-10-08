@@ -5,6 +5,7 @@ import { AuthContextProvider } from 'auth-context/store'
 import { useRouter } from 'next/router'
 import { useAuthentication } from 'hooks/use-auth'
 import '../styles/globals.css'
+import { Suspense } from 'components/suspense'
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   const { isReady } = useRouter()
@@ -36,17 +37,19 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         />
       </Head>
 
-      <AuthContextProvider
-        isAuth={isAuth}
-        user={user}
-        logout={logout}
-        initAuthentication={initAuthentication}
-        getUser={getUser}
-        login={login}
-        status={status}
-      >
-        <Component {...pageProps} />
-      </AuthContextProvider>
+      <Suspense status={status} loading={<p>loading...</p>}>
+        <AuthContextProvider
+          isAuth={isAuth}
+          user={user}
+          logout={logout}
+          initAuthentication={initAuthentication}
+          getUser={getUser}
+          login={login}
+          status={status}
+        >
+          <Component {...pageProps} />
+        </AuthContextProvider>
+      </Suspense>
     </>
   )
 }

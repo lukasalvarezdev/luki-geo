@@ -2,13 +2,14 @@ import * as React from 'react'
 import { useAsync } from 'hooks'
 import * as API from '../api'
 import { useRouter } from 'next/router'
+import { Suspense } from './suspense'
 
 export const JobsProvider: React.FC = ({ children }) => {
   const {
     query: { jobId },
     push,
   } = useRouter()
-  const { data: jobs, run } = useAsync<any>({})
+  const { data: jobs, run, status } = useAsync<any>({})
   const [selectedJob, setSelectedJob] = React.useState<any>({})
 
   React.useEffect(() => {
@@ -29,9 +30,11 @@ export const JobsProvider: React.FC = ({ children }) => {
   )
 
   return (
-    <jobsContext.Provider value={{ jobs, selectedJob, selectJob }}>
-      {children}
-    </jobsContext.Provider>
+    <Suspense status={status} loading={<p>loading...</p>}>
+      <jobsContext.Provider value={{ jobs, selectedJob, selectJob }}>
+        {children}
+      </jobsContext.Provider>
+    </Suspense>
   )
 }
 

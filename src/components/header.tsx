@@ -26,10 +26,7 @@ const NavMenu = () => {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <StyledNavMenu
-      className="account d-f align-items-c relative"
-      onClick={() => setIsOpen(!isOpen)}
-    >
+    <StyledNavMenu className="account d-f align-items-c relative">
       <div className="menu d-f align-items-c mr-20">
         <Link href="/">
           <a className="d-b mr-20">View all jobs</a>
@@ -38,11 +35,13 @@ const NavMenu = () => {
           <a className="d-b mr-20">View full map</a>
         </Link>
       </div>
-      <div className="profile-img mr-20 pointer"></div>
-      <div className="info mr-20 pointer">
-        <p className="name">{user.name || 'User'}</p>
+      <div onClick={() => setIsOpen(!isOpen)} className="d-f align-items-c pointer">
+        <div className="profile-img mr-20 pointer"></div>
+        <div className="info mr-20 pointer">
+          <p className="name">{user.name || 'User'}</p>
+        </div>
+        <StrokedDownArrowIcon />
       </div>
-      <StrokedDownArrowIcon />
       {isOpen ? <ContextMenu /> : null}
     </StyledNavMenu>
   )

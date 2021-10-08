@@ -12,6 +12,8 @@ export const AuthApp = ({ children }: { children: React.ReactNode }) => {
     if (!isAuth && status === 'resolved') push('/login')
   }, [isAuth, push, status])
 
+  if (!isAuth) return null
+
   return (
     <StyledAuthApp>
       <Header />

@@ -60,7 +60,7 @@ const LoginForm = () => {
         <div className="form-field mb-10">
           <input type="text" value={userInfo.email} onChange={handleChange} name="email" />
         </div>
-        <div className="form-field mb-20">
+        <div className="form-field mb-10">
           <input
             type="password"
             value={userInfo.password}
@@ -68,7 +68,7 @@ const LoginForm = () => {
             name="password"
           />
         </div>
-        {error}
+        <p className="mb-20 error-msg">{error}</p>
         <button className="btn-primary">Submit</button>
       </form>
     </StyledLogin>
@@ -80,5 +80,10 @@ const StyledLogin = styled.div`
 
   form {
     width: 400px;
+  }
+
+  .error-msg {
+    color: #db2d2d;
+    font-size: 1.3rem;
   }
 `
