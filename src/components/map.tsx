@@ -6,12 +6,12 @@ export const Map = ({ position, children }: { position: any; children: React.Rea
     <div className="relative">
       <MapContainer
         center={[position.latitude, position.longitude]}
-        zoom={13}
+        zoom={3}
         scrollWheelZoom={false}
         key={position}
         style={{
-          height: '350px',
-          width: '450px',
+          height: '550px',
+          width: '650px',
         }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -24,7 +24,7 @@ export const Map = ({ position, children }: { position: any; children: React.Rea
 export const LocationMarker = ({ position }: { position: any }) => {
   const map = useMapEvents({
     locationfound() {
-      map.panTo(position, map.getZoom())
+      map.panTo(position)
     },
   })
 
