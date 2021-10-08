@@ -1,3 +1,9 @@
+import { AuthApp } from 'components/protected-route'
+
 export default function HomePage() {
-  return <h2>Homee</h2>
+  return (
+    <AuthApp>
+      <h2>Homee</h2>
+    </AuthApp>
+  )
 }
