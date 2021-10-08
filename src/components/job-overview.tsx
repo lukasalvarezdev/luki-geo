@@ -30,4 +30,7 @@ export const JobOverview = () => {
   )
 }
 
-const StyledJobOverview = styled.div``
+const StyledJobOverview = styled.div`
+  height: 100%;
+  width: 60%;
+`

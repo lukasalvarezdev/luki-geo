@@ -11,10 +11,23 @@ export const AuthApp = ({ children }: { children: React.ReactNode }) => {
     if (!isAuth && status === 'resolved') push('/')
   }, [isAuth, push, status])
 
-  return <StyledAuthApp>{children}</StyledAuthApp>
+  return (
+    <StyledAuthApp>
+      <header className="bg-white">hola</header>
+      <div className="container bg-white">{children}</div>
+    </StyledAuthApp>
+  )
 }
 
 const StyledAuthApp = styled.div`
-  padding-top: calc(60px /* header height */);
-  padding-left: calc(340px /* sidebar width */);
+  height: 100vh;
+  overflow-y: hidden;
+
+  header {
+    height: 60px;
+  }
+
+  .container {
+    max-width: 1000px;
+  }
 `

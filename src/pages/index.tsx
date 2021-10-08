@@ -9,9 +9,7 @@ export default function HomePage() {
       <JobsProvider>
         <div className="d-f">
           <JobsList />
-          <div className="f-one p-30">
-            <JobOverview />
-          </div>
+          <JobOverview />
         </div>
       </JobsProvider>
     </AuthApp>
