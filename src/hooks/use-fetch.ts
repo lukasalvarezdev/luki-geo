@@ -1,15 +1,14 @@
 import * as React from 'react'
 import { useSafeDispatch } from 'hooks'
 import { Status } from 'utils/types'
+import { RequestRes } from 'utils/fetch-middleware'
 
 export function useFetch() {
   const [{ status, error }, _dispatch] = React.useReducer(reducer, initialState)
   const dispatch = useSafeDispatch(_dispatch)
 
   const onPromiseError = React.useCallback(
-    (err: string, options: FetchOptions<any>) => {
-      const { preventErrorAlert, errorMessage, preventAllAlerts } = options
-
+    (err: string) => {
       dispatch({
         status: 'rejected',
         error: err,
@@ -19,8 +18,7 @@ export function useFetch() {
   )
 
   const onPromiseSuccess = React.useCallback(
-    function <T>(data: T, options: FetchOptions<any>) {
-      const { preventSuccesAlert, successMessage, preventAllAlerts } = options
+    function <T>(data: T) {
       dispatch({
         status: 'resolved',
       })
@@ -36,7 +34,7 @@ export function useFetch() {
       ...args: Parameters<typeof promise>
     ): Promise<T | void> {
       if (!promise) return throwNoPromiseError()
-      const { onFailure, onSuccess, preventAllAlerts, preventLoadingAlert } = options
+      const { onFailure, onSuccess } = options
       dispatch({
         status: 'pending',
       })
@@ -45,11 +43,11 @@ export function useFetch() {
 
       if (data === null || error) {
         onFailure?.(error || 'There was an error')
-        return onPromiseError(error || 'There was an error', options)
+        return onPromiseError(error || 'There was an error')
       }
 
       onSuccess?.(data)
-      return onPromiseSuccess(data, options)
+      return onPromiseSuccess(data)
     },
     [onPromiseError, onPromiseSuccess, , dispatch],
   )
@@ -60,10 +58,6 @@ export function useFetch() {
 export type UseFetchReturn = ReturnType<typeof useFetch>
 
 export type FetchOptions<T> = {
-  preventLoadingAlert?: boolean
-  preventErrorAlert?: boolean
-  preventSuccesAlert?: boolean
-  preventAllAlerts?: boolean
   onSuccess?: (data: T) => void
   onFailure?: (error: string) => void
   loadingMessage?: string
@@ -91,5 +85,3 @@ const initialState = {
   status: 'idle' as Status,
   error: '',
 }
-
-export type RequestRes<T> = Promise<[T | null, null | string]>
