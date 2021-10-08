@@ -1,7 +1,12 @@
 import * as React from 'react'
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet'
 
-export const Map = ({ position, children }: { position: any; children: React.ReactNode }) => {
+interface MapProps {
+  position: any
+  children: React.ReactNode
+}
+
+export const Map = ({ position, children }: MapProps) => {
   return (
     <div className="relative">
       <MapContainer
@@ -21,7 +26,7 @@ export const Map = ({ position, children }: { position: any; children: React.Rea
   )
 }
 
-export const LocationMarker = ({ position }: { position: any }) => {
+export const LocationMarker = ({ position, children }: MapProps) => {
   const map = useMapEvents({
     locationfound() {
       map.panTo(position)
@@ -32,5 +37,5 @@ export const LocationMarker = ({ position }: { position: any }) => {
     map.locate()
   }, [position, map])
 
-  return position === null ? null : <Marker position={position} />
+  return position === null ? null : <Marker position={position}>{children}</Marker>
 }
