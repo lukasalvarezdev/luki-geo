@@ -4,7 +4,7 @@ import { useJobsContext } from './jobs-context'
 export const JobsList = () => {
   const {
     jobs: { data },
-    setSelectedJob,
+    selectJob,
   } = useJobsContext()
 
   return (
@@ -16,7 +16,7 @@ export const JobsList = () => {
           className="job pointer"
           key={job.id}
           onClick={() => {
-            setSelectedJob(job)
+            selectJob(job)
           }}
         >
           <h4>{job.title}</h4>

@@ -1,8 +1,13 @@
 import * as React from 'react'
 import { useAsync } from 'hooks'
 import * as API from '../api'
+import { useRouter } from 'next/router'
 
 export const JobsProvider: React.FC = ({ children }) => {
+  const {
+    query: { jobId },
+    push,
+  } = useRouter()
   const { data: jobs, run } = useAsync<any>({})
   const [selectedJob, setSelectedJob] = React.useState<any>({})
 
@@ -10,8 +15,21 @@ export const JobsProvider: React.FC = ({ children }) => {
     run(API.getAllJobs, {})
   }, [run])
 
+  React.useEffect(() => {
+    const selectedJob = jobs?.data?.find((job: any) => job.id === parseInt(jobId as string))
+    if (selectedJob) setSelectedJob(selectedJob)
+  }, [jobId, jobs?.data])
+
+  const selectJob = React.useCallback(
+    (job: any) => {
+      setSelectedJob(job)
+      push(`/?jobId=${job.id}`)
+    },
+    [push],
+  )
+
   return (
-    <jobsContext.Provider value={{ jobs, selectedJob, setSelectedJob }}>
+    <jobsContext.Provider value={{ jobs, selectedJob, selectJob }}>
       {children}
     </jobsContext.Provider>
   )
@@ -20,7 +38,7 @@ export const JobsProvider: React.FC = ({ children }) => {
 interface JobsContext {
   jobs: any
   selectedJob: any
-  setSelectedJob: any
+  selectJob: any
 }
 
 const jobsContext = React.createContext<JobsContext>(undefined as unknown as JobsContext)
