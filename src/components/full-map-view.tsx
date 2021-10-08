@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useJobsContext } from './jobs-context'
+import { useJobsContext } from '../jobs-context'
 import dynamic from 'next/dynamic'
 const Map = dynamic<MapProps>(() => import('./map').then(m => m.Map), { ssr: false })
 const LocationMarker = dynamic<MapProps>(() => import('./map').then(m => m.LocationMarker), {

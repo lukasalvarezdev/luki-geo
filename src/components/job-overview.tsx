@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useJobsContext } from './jobs-context'
+import { useJobsContext } from '../jobs-context'
 import { isEmptyObject } from 'utils/helpers'
 import dynamic from 'next/dynamic'
 import { CalendarIcon, PersonIcon } from 'utils/icons'

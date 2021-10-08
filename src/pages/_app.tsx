@@ -3,9 +3,9 @@ import Head from 'next/head'
 import { AppProps } from 'next/app'
 import { AuthContextProvider } from 'auth-context'
 import { useRouter } from 'next/router'
-import { useAuthentication } from 'hooks/use-auth'
-import '../styles/globals.css'
+import { useAuthentication } from 'hooks'
 import { Suspense } from 'components/suspense'
+import '../styles/globals.css'
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   const { isReady } = useRouter()

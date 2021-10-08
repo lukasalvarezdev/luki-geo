@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+// prevents React from trying to update state after the component is unmounted
 export function useSafeDispatch<T extends React.Dispatch<any>>(dispatch: T): T {
   const mounted = React.useRef(false)
 

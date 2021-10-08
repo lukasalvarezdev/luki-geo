@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { useAsync } from 'hooks'
-import * as API from '../api'
+import * as API from './api'
 import { useRouter } from 'next/router'
-import { Suspense } from './suspense'
+import { Suspense } from './components/suspense'
 
 export const JobsProvider: React.FC = ({ children }) => {
   const {

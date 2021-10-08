@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { CalendarIcon, PersonIcon } from 'utils/icons'
-import { useJobsContext } from './jobs-context'
+import { useJobsContext } from '../jobs-context'
 
 export const JobsList = () => {
   const {

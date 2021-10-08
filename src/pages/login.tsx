@@ -6,10 +6,6 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 export default function LoginPage() {
-  return <LoginForm />
-}
-
-const LoginForm = () => {
   const { push } = useRouter()
   const [userInfo, setUserInfo] = React.useState({
     email: '',

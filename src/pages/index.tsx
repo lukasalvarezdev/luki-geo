@@ -1,5 +1,5 @@
 import { JobOverview } from 'components/job-overview'
-import { JobsProvider } from 'components/jobs-context'
+import { JobsProvider } from '../jobs-context'
 import { JobsList } from 'components/jobs-list'
 import { AuthApp } from 'components/protected-route'
 

@@ -1,4 +1,4 @@
-import { JobsInfo } from 'components/jobs-context'
+import { JobsInfo } from './jobs-context'
 import { UserProps } from 'hooks/use-auth'
 import { request, RequestRes } from 'utils/fetch-middleware'
 interface UserInfo {
