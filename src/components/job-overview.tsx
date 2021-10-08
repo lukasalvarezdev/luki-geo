@@ -9,13 +9,20 @@ export const JobOverview = () => {
 
   if (isEmptyObject(selectedJob)) return null
 
+  // console.log(selectedJob)
+
   return (
     <StyledJobOverview className="bg-white p-20 normal-shadow border-radius-primary">
       <h2>{selectedJob.title}</h2>
       <p>Status: {selectedJob.status}</p>
       <p>Date: {new Date(selectedJob.created_at).toDateString()}</p>
 
-      <Map />
+      <Map
+        position={{
+          latitude: parseFloat(selectedJob.latitude),
+          longitude: parseFloat(selectedJob.longitude),
+        }}
+      />
     </StyledJobOverview>
   )
 }
