@@ -20,7 +20,7 @@ const LoginForm = () => {
 
   React.useEffect(() => {
     if (isAuth) push('/')
-  }, [isAuth])
+  }, [isAuth, push])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInfo(info => ({ ...info, [e.target.name]: e.target.value }))

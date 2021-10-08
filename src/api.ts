@@ -36,7 +36,6 @@ export async function getAllJobs(): RequestRes<any> {
   const [jobs, error] = await request<any>('https://coding-test.rootstack.net/api/jobs', {
     method: 'GET',
   })
-  console.log(jobs)
 
   return [jobs, error]
 }

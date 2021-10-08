@@ -13,7 +13,7 @@ export const JobsList = () => {
 
       {data?.map((job: any) => (
         <div
-          className="job"
+          className="job pointer"
           key={job.id}
           onClick={() => {
             setSelectedJob(job)
@@ -33,7 +33,13 @@ const StyledJobsList = styled.div`
   left: 0;
   top: 60px /* header height */;
   height: 100%;
-  width: 240px;
+  width: 340px;
   padding: 30px 0;
   box-shadow: 0px 5px 6px 0px rgb(0 0 0 / 16%);
+
+  .job {
+    :hover {
+      background-color: #dbdbdb;
+    }
+  }
 `

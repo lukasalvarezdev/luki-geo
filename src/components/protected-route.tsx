@@ -16,5 +16,5 @@ export const AuthApp = ({ children }: { children: React.ReactNode }) => {
 
 const StyledAuthApp = styled.div`
   padding-top: calc(60px /* header height */);
-  padding-left: calc(240px /* sidebar width */);
+  padding-left: calc(340px /* sidebar width */);
 `
