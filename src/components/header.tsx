@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useAuthContext } from 'auth-context/store'
+import { useAuthContext } from 'auth-context'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { StrokedDownArrowIcon } from 'utils/icons'

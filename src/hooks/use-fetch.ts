@@ -49,7 +49,7 @@ export function useFetch() {
       onSuccess?.(data)
       return onPromiseSuccess(data)
     },
-    [onPromiseError, onPromiseSuccess, , dispatch],
+    [onPromiseError, onPromiseSuccess, dispatch],
   )
 
   return { fetchData, status, error }

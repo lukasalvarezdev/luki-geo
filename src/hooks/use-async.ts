@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { useFetch, useSafeDispatch, FetchOptions, RequestRes } from 'hooks'
+import { useFetch, useSafeDispatch, FetchOptions } from 'hooks'
+import { RequestRes } from 'utils/fetch-middleware'
 
 export function useAsync<Data>(initialState: Data) {
   const { error, fetchData, status } = useFetch()
@@ -20,7 +21,6 @@ export function useAsync<Data>(initialState: Data) {
             !opts?.preventDispatch && setData(data as Data)
             opts?.onSuccess?.(data as Data)
           },
-          preventAllAlerts: true,
         },
         ...args,
       )

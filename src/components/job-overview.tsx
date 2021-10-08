@@ -3,8 +3,9 @@ import { useJobsContext } from './jobs-context'
 import { isEmptyObject } from 'utils/helpers'
 import dynamic from 'next/dynamic'
 import { CalendarIcon, PersonIcon } from 'utils/icons'
-const Map = dynamic<any>(() => import('./map').then(m => m.Map), { ssr: false })
-const LocationMarker = dynamic<any>(() => import('./map').then(m => m.LocationMarker), {
+import { MapProps } from './map'
+const Map = dynamic<MapProps>(() => import('./map').then(m => m.Map), { ssr: false })
+const LocationMarker = dynamic<MapProps>(() => import('./map').then(m => m.LocationMarker), {
   ssr: false,
 })
 

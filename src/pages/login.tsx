@@ -1,5 +1,5 @@
 import * as API from 'api'
-import { useAuthContext } from 'auth-context/store'
+import { useAuthContext } from 'auth-context'
 import { useFetch } from 'hooks'
 import { useRouter } from 'next/dist/client/router'
 import * as React from 'react'

@@ -1,3 +1,5 @@
+import { JobsInfo } from 'components/jobs-context'
+import { UserProps } from 'hooks/use-auth'
 import { request, RequestRes } from 'utils/fetch-middleware'
 interface UserInfo {
   email: string
@@ -24,16 +26,19 @@ export async function getAuthToken(userInfo: UserInfo): RequestRes<true> {
   return [true, error]
 }
 
-export async function getMember(): RequestRes<any> {
-  const [user, error] = await request<any>('https://coding-test.rootstack.net/api/auth/me', {
-    method: 'GET',
-  })
+export async function getMember(): RequestRes<UserProps> {
+  const [user, error] = await request<UserProps>(
+    'https://coding-test.rootstack.net/api/auth/me',
+    {
+      method: 'GET',
+    },
+  )
 
   return [user, error]
 }
 
-export async function getAllJobs(): RequestRes<any> {
-  const [jobs, error] = await request<any>('https://coding-test.rootstack.net/api/jobs', {
+export async function getAllJobs(): RequestRes<JobsInfo> {
+  const [jobs, error] = await request<JobsInfo>('https://coding-test.rootstack.net/api/jobs', {
     method: 'GET',
   })
 

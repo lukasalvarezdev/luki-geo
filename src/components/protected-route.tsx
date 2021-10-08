@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
-import { useAuthContext } from 'auth-context/store'
+import { useAuthContext } from 'auth-context'
 import styled from 'styled-components'
 import { Header } from './header'
 

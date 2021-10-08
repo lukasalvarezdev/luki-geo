@@ -18,9 +18,11 @@ export const JobsList = () => {
         <h3>Best worldwide jobs</h3>
       </div>
 
-      {data?.map((job: any) => (
+      {data?.map(job => (
         <div
-          className={`job pointer p-10 d-f ${job.id == jobId ? 'selected' : ''}`}
+          className={`job pointer p-10 d-f ${
+            job.id == parseInt(jobId as string) ? 'selected' : ''
+          }`}
           key={job.id}
           onClick={() => {
             selectJob(job)

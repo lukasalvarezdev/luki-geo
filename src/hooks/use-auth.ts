@@ -8,7 +8,7 @@ export function useAuthentication() {
   const { push } = useRouter()
   const [{ user, isAuth, status }, unsafeDispatch] = React.useReducer(reducer, {
     isAuth: false,
-    user: {} as any,
+    user: {} as UserProps,
     status: 'pending',
   })
   const dispatch = useSafeDispatch(unsafeDispatch)
@@ -28,7 +28,7 @@ export function useAuthentication() {
   }, [getUser])
 
   function logout() {
-    dispatch({ status: 'resolved', isAuth: false, user: {} })
+    dispatch({ status: 'resolved', isAuth: false, user: {} as UserProps })
     push('/?logout=true')
     localStorage.clear()
   }
@@ -45,7 +45,7 @@ export type UseAuthReturn = ReturnType<typeof useAuthentication>
 
 interface InitialState {
   isAuth: boolean
-  user: any
+  user: UserProps
   status: Status
 }
 
@@ -53,3 +53,12 @@ const reducer = (curr: InitialState, updates: Partial<InitialState>) => ({
   ...curr,
   ...updates,
 })
+
+export interface UserProps {
+  created_at: string
+  email: string
+  email_verified_at: string
+  id: number
+  name: string
+  updated_at: string
+}

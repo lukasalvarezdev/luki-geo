@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet'
 
 export interface MapProps {
   position: any
-  children: React.ReactNode
+  children?: React.ReactNode
   style?: any
   zoom?: number
 }

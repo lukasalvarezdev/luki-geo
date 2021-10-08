@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Head from 'next/head'
 import { AppProps } from 'next/app'
-import { AuthContextProvider } from 'auth-context/store'
+import { AuthContextProvider } from 'auth-context'
 import { useRouter } from 'next/router'
 import { useAuthentication } from 'hooks/use-auth'
 import '../styles/globals.css'
