@@ -7,8 +7,12 @@ export default function HomePage() {
   return (
     <AuthApp>
       <JobsProvider>
-        <JobsList />
-        <JobOverview />
+        <div className="d-f">
+          <JobsList />
+          <div className="f-one p-30">
+            <JobOverview />
+          </div>
+        </div>
       </JobsProvider>
     </AuthApp>
   )

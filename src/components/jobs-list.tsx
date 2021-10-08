@@ -8,7 +8,7 @@ export const JobsList = () => {
   } = useJobsContext()
 
   return (
-    <StyledJobsList>
+    <StyledJobsList className="bg-white">
       <h3>Best worldwide jobs</h3>
 
       {data?.map((job: any) => (
@@ -28,4 +28,12 @@ export const JobsList = () => {
   )
 }
 
-const StyledJobsList = styled.div``
+const StyledJobsList = styled.div`
+  position: fixed;
+  left: 0;
+  top: 60px /* header height */;
+  height: 100%;
+  width: 240px;
+  padding: 30px 0;
+  box-shadow: 0px 5px 6px 0px rgb(0 0 0 / 16%);
+`
