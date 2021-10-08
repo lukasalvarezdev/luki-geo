@@ -3,13 +3,14 @@ import { useJobsContext } from './jobs-context'
 import { isEmptyObject } from 'utils/helpers'
 import dynamic from 'next/dynamic'
 const Map = dynamic<any>(() => import('./map').then(m => m.Map), { ssr: false })
+const LocationMarker = dynamic<any>(() => import('./map').then(m => m.LocationMarker), {
+  ssr: false,
+})
 
 export const JobOverview = () => {
   const { selectedJob } = useJobsContext()
 
   if (isEmptyObject(selectedJob)) return null
-
-  // console.log(selectedJob)
 
   return (
     <StyledJobOverview className="bg-white p-20 normal-shadow border-radius-primary">
@@ -22,7 +23,9 @@ export const JobOverview = () => {
           latitude: parseFloat(selectedJob.latitude),
           longitude: parseFloat(selectedJob.longitude),
         }}
-      />
+      >
+        <LocationMarker position={{ lat: selectedJob.latitude, lng: selectedJob.longitude }} />
+      </Map>
     </StyledJobOverview>
   )
 }

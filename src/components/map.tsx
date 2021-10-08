@@ -1,11 +1,9 @@
 import * as React from 'react'
-import styled from 'styled-components'
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet'
 
-export const Map = ({ position }: { position: any }) => {
-  console.log(position)
+export const Map = ({ position, children }: { position: any; children: React.ReactNode }) => {
   return (
-    <StyledMap className="relative">
+    <div className="relative">
       <MapContainer
         center={[position.latitude, position.longitude]}
         zoom={13}
@@ -17,18 +15,16 @@ export const Map = ({ position }: { position: any }) => {
         }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <LocationMarker position={{ lat: position.latitude, lng: position.longitude }} />
+        {children}
       </MapContainer>
-    </StyledMap>
+    </div>
   )
 }
 
-const StyledMap = styled.div``
-
-const LocationMarker = ({ position }: { position: any }) => {
+export const LocationMarker = ({ position }: { position: any }) => {
   const map = useMapEvents({
     locationfound() {
-      map.flyTo(position, map.getZoom())
+      map.panTo(position, map.getZoom())
     },
   })
 
@@ -36,9 +32,5 @@ const LocationMarker = ({ position }: { position: any }) => {
     map.locate()
   }, [position, map])
 
-  return position === null ? null : (
-    <Marker position={position}>
-      <Popup>You are here</Popup>
-    </Marker>
-  )
+  return position === null ? null : <Marker position={position} />
 }
