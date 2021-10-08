@@ -52,7 +52,7 @@ const ContextMenu = () => {
   const { logout } = useAuthContext()
 
   return (
-    <div className="context-menu normal-shadow border-radius-primary">
+    <div className="context-menu normal-shadow border-radius-primary pointer">
       <p
         onClick={e => {
           e.preventDefault()
@@ -74,6 +74,7 @@ const StyledNavMenu = styled.div`
     right: 0;
     width: 100%;
     max-width: 150px;
+    z-index: 1000;
   }
 
   svg {

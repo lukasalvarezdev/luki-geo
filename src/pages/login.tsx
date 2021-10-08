@@ -3,6 +3,7 @@ import { useAuthContext } from 'auth-context/store'
 import { useFetch } from 'hooks'
 import { useRouter } from 'next/dist/client/router'
 import * as React from 'react'
+import styled from 'styled-components'
 
 export default function LoginPage() {
   return <LoginForm />
@@ -49,16 +50,35 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={userInfo.email} onChange={handleChange} name="email" />
-      <input
-        type="password"
-        value={userInfo.password}
-        onChange={handleChange}
-        name="password"
-      />
-      {error}
-      <button>Submit</button>
-    </form>
+    <StyledLogin className="d-f center-f ">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white normal-shadow border-radius-primary p-20"
+      >
+        <h3 className="mb-20">Welcome to Luki Geo</h3>
+
+        <div className="form-field mb-10">
+          <input type="text" value={userInfo.email} onChange={handleChange} name="email" />
+        </div>
+        <div className="form-field mb-20">
+          <input
+            type="password"
+            value={userInfo.password}
+            onChange={handleChange}
+            name="password"
+          />
+        </div>
+        {error}
+        <button className="btn-primary">Submit</button>
+      </form>
+    </StyledLogin>
   )
 }
+
+const StyledLogin = styled.div`
+  height: 100vh;
+
+  form {
+    width: 400px;
+  }
+`

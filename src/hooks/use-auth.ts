@@ -25,7 +25,7 @@ export function useAuthentication() {
 
   const initAuthentication = React.useCallback(async (): Promise<void> => {
     getUser()
-  }, [dispatch, getUser])
+  }, [getUser])
 
   function logout() {
     dispatch({ status: 'resolved', isAuth: false, user: {} })

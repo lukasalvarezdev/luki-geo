@@ -9,7 +9,7 @@ export const AuthApp = ({ children }: { children: React.ReactNode }) => {
   const { isAuth, status } = useAuthContext()
 
   React.useEffect(() => {
-    if (!isAuth && status === 'resolved') push('/')
+    if (!isAuth && status === 'resolved') push('/login')
   }, [isAuth, push, status])
 
   return (
