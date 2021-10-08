@@ -23,10 +23,19 @@ export async function getAuthToken(userInfo: UserInfo): RequestRes<true> {
   localStorage.setItem('access_token', `${token.token_type} ${token.access_token}`)
   return [true, error]
 }
+
 export async function getMember(): RequestRes<any> {
   const [user, error] = await request<any>('https://coding-test.rootstack.net/api/auth/me', {
     method: 'GET',
   })
 
   return [user, error]
+}
+
+export async function getAllJobs(): RequestRes<any> {
+  const [jobs, error] = await request<any>('https://coding-test.rootstack.net/api/jobs', {
+    method: 'GET',
+  })
+
+  return [jobs, error]
 }
